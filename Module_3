@@ -1,0 +1,132 @@
+
+## Learning Python Concepts Through a Simple Calculator
+
+### Basic Python Concepts
+
+1. **Built-in Functions**:
+   - **`print()`**: Outputs data to the console.
+   - **`input()`**: Reads data from the user.
+   - **`int()`, `float()`, `str()`**: Converts data types.
+
+2. **Loops**:
+   - **`for` Loop**: Iterates over a sequence (e.g., a list or range).
+   - **`while` Loop**: Repeats as long as a condition is true.
+
+3. **Conditional Statements**:
+   - **`if`**: Executes a block of code if a condition is true.
+   - **`elif`**: Checks another condition if the previous one was false.
+   - **`else`**: Executes a block of code if none of the previous conditions were true.
+
+### Building a Simple Calculator
+
+Let's create a basic calculator using these concepts.
+
+#### 1. Create a Python Script
+
+Here's a simple calculator script:
+
+```python
+def add(x, y):
+    return x + y
+
+def subtract(x, y):
+    return x - y
+
+def multiply(x, y):
+    return x * y
+
+def divide(x, y):
+    if y != 0:
+        return x / y
+    else:
+        return "Error! Division by zero."
+
+print("Select operation:")
+print("1. Add")
+print("2. Subtract")
+print("3. Multiply")
+print("4. Divide")
+
+choice = input("Enter choice (1/2/3/4): ")
+
+num1 = float(input("Enter first number: "))
+num2 = float(input("Enter second number: "))
+
+if choice == '1':
+    print(f"Result: {add(num1, num2)}")
+elif choice == '2':
+    print(f"Result: {subtract(num1, num2)}")
+elif choice == '3':
+    print(f"Result: {multiply(num1, num2)}")
+elif choice == '4':
+    print(f"Result: {divide(num1, num2)}")
+else:
+    print("Invalid input")
+```
+
+#### 2. Host Your Calculator on Streamlit
+
+Streamlit allows you to easily create web apps with Python. To host your calculator:
+
+1. **Install Streamlit**:
+
+   ```bash
+   pip install streamlit
+   ```
+
+2. **Create a Streamlit Script**:
+
+   Save the following code in a file called `calculator_app.py`:
+
+   ```python
+   import streamlit as st
+
+   def add(x, y):
+       return x + y
+
+   def subtract(x, y):
+       return x - y
+
+   def multiply(x, y):
+       return x * y
+
+   def divide(x, y):
+       if y != 0:
+           return x / y
+       else:
+           return "Error! Division by zero."
+
+   st.title("Simple Calculator")
+
+   st.write("Select operation:")
+   options = ["Add", "Subtract", "Multiply", "Divide"]
+   choice = st.selectbox("Choose an operation", options)
+
+   num1 = st.number_input("Enter first number:", value=0.0)
+   num2 = st.number_input("Enter second number:", value=0.0)
+
+   if st.button("Calculate"):
+       if choice == 'Add':
+           result = add(num1, num2)
+       elif choice == 'Subtract':
+           result = subtract(num1, num2)
+       elif choice == 'Multiply':
+           result = multiply(num1, num2)
+       elif choice == 'Divide':
+           result = divide(num1, num2)
+       st.write(f"Result: {result}")
+   ```
+
+3. **Run Your Streamlit App**:
+
+   In your terminal, navigate to the directory containing `calculator_app.py` and run:
+
+   ```bash
+   streamlit run calculator_app.py
+   ```
+
+4. **View App**:
+
+   Open in web browser and go to `http://localhost:8501` to interact with calculator.
+
+
